@@ -1,0 +1,104 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Preambuła w pliku z moją rozprawą doktorską
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[oneside,12pt]{mwbk} % "mbwk" to polski odpowiednik klasy "book". Niestety, gryzie się z pakietem "bicaption".
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Tylko niezbędne pakiety
+    \usepackage[round]{natbib}
+    \usepackage{apalike}
+        \let\bibhang\relax
+    \usepackage{amsmath, amssymb}
+    \usepackage{float}
+    
+    \usepackage{polski}
+     \usepackage[english, polish]{babel} 
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}% nieszczęśni użytkownicy Windows powinni
+                               % zmienić utf8 na cp1250
+    \usepackage[unicode, naturalnames, breaklinks]{hyperref}
+        \def\UrlBreaks{\do\/\do-} %% "Złamanie" zbyt długich URL-i
+    
+    \usepackage{longtable,booktabs}
+    
+    \usepackage{graphicx}
+        \graphicspath{ {grafika/} {ObrazkiZRaportuZDyzagregacji/figures/} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Wymagania związane z rozporządzeniem Rektora:
+%%%% https://www.bip.pw.edu.pl/var/pw/storage/original/application/d68cb63fd8a9f6591f0449caab45696b.pdf
+
+    % Paragraf 1.2 - strona tytułowa powinna być zgodna z załącznikiem nr 2:
+    \usepackage{pdfpages} % do dołączenia strony tytułowej w PDF
+    
+    % Paragraf 1.5 - dziekan może ustalić szczególne wymagania 
+    % (i ustalił - podwójne podpisy, po polsku i angielsku):
+    % https://tex.stackexchange.com/questions/370134/having-better-control-on-captions-in-two-languages-under-each-image
+    \usepackage[lang=english]{bicaption}
+    
+    % Załącznik nr 1, punkt 1 i 2 - A4. marginesy po 2,5 cm
+    \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+    
+    % Załącznik nr 1, punkt 3 i 4 - czcionka Times New Roman, wielkość czcionki 12 pkt.
+    \usepackage{times}
+    
+    % Załącznik nr 1, punkt 5 - interlinia: 1,5
+    %Uwaga: Jeśli chcesz używać interlinii równej 1,5 jako wartość należy wstawić "1.3". Natomiast w przypadku interlinii równej 2, wartość to "1.6" (na podstawie https://pl.wikibooks.org/wiki/LaTeX/Formatowanie)
+    \linespread{1.3}
+    
+    % Załącznik nr 1, punkt 6 - numeracja stron - wyśrodkowana, na dole strony
+    %the package fancyhdr doesn't overwrite the default styles instead it defines a new one named fancy  
+    \usepackage{fancyhdr} 
+    %\fancyhf{}
+    %\lhead{ \chaptername \thechapter}
+    \lhead{}
+    \setlength{\headheight}{26.98592pt} 
+    \cfoot{\thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Zdefiniowanie środowisk do słów kluczowych i streszczenia
+
+    \providecommand{\keywords}[1]{\textbf{\textit{Słowa kluczowe:}} #1}
+    \providecommand{\keywordsANG}[1]{\textbf{\textit{Keywords:}} #1}
+    
+    %% TODO: Zdefiniować tylko jedno środowisko do streszczeń i słów kluczowych!!
+    \newenvironment{abstract}%
+        {\cleardoublepage\thispagestyle{empty}\begin{center}%
+        %{\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
+        \bfseries\abstractname\end{center}\thispagestyle{empty}}%
+        {\vfill\null\thispagestyle{empty}}
+        
+    \newenvironment{abstract-ang}%
+        {\cleardoublepage\thispagestyle{empty}\begin{center}%
+        %{\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
+        \bfseries Abstract \end{center}\thispagestyle{empty}}%
+        {\vfill\null\thispagestyle{empty}}
+        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Inne ustawienia
+    \pdfstringdefDisableCommands{%
+      \let\enspace\empty  % this causes the warning for \kern
+      \let\noindent\empty % this causes the warning for \indent
+    }
+    
+    % Zgodnie z: http://tex.stackexchange.com/questions/83440/inputenc-error-unicode-char-u8-not-set-up-for-use-with-latex
+    % to define non-breaking space (and omit error message)
+    \DeclareUnicodeCharacter{00A0}{~}
+    %
+    
+    %cytowanie otoczone nawiasem
+    \renewcommand{\cite}{\citep}
+    %Zmiana nawiasu z okrągłego na kwadratowy - Selecting citation style and punctuation
+    \bibpunct{[}{]}{,}{a}{}{;}
+    
+    %% Ten typ listy jest używany przez wyjście z Rmarkdown
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
