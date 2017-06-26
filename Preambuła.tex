@@ -6,7 +6,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% Tylko niezbędne pakiety
-    \usepackage[round]{natbib}
     \usepackage{apalike}
         \let\bibhang\relax
     \usepackage[round]{natbib}
@@ -17,7 +16,7 @@
         \floatsetup[figure]{capposition=bottom}
     
     \usepackage{polski}
-     \usepackage[english, polish]{babel} 
+     \usepackage[english, polish]{babel}
     \usepackage[T1]{fontenc}
     \usepackage[utf8]{inputenc}% nieszczęśni użytkownicy Windows powinni
                                % zmienić utf8 na cp1250
@@ -47,7 +46,9 @@
     \usepackage[lang=english]{bicaption}
     
     % Załącznik nr 1, punkt 1 i 2 - A4. marginesy po 2,5 cm
-    \usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+    % stara wersja, pani z Oficyny PW miała zastrzeżenia do wielkości marginesu:
+    %\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+    \usepackage[a4paper,includeheadfoot, margin=2.5cm]{geometry}
     
     % Załącznik nr 1, punkt 3 i 4 - czcionka Times New Roman, wielkość czcionki 12 pkt.
     \usepackage{times}
@@ -60,12 +61,7 @@
     
     % Załącznik nr 1, punkt 6 - numeracja stron - wyśrodkowana, na dole strony
     %the package fancyhdr doesn't overwrite the default styles instead it defines a new one named fancy  
-    \usepackage{fancyhdr} 
-    %\fancyhf{}
-    %\lhead{ \chaptername \thechapter}
-    \lhead{}
-    \setlength{\headheight}{26.98592pt} 
-    \cfoot{\thepage}
+    \usepackage{fancyhdr}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -75,7 +71,6 @@
     \providecommand{\keywords}[1]{\textbf{\textit{Słowa kluczowe:}} #1}
     \providecommand{\keywordsANG}[1]{\textbf{\textit{Keywords:}} #1}
     
-    %% TODO: Zdefiniować tylko jedno środowisko do streszczeń i słów kluczowych!!
     \newenvironment{abstract}%
         {\cleardoublepage\thispagestyle{empty}\begin{center}%
         %{\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
@@ -85,7 +80,7 @@
     \newenvironment{abstract-ang}%
         {\cleardoublepage\thispagestyle{empty}\begin{center}%
         %{\cleardoublepage\thispagestyle{empty}\null\vfill\begin{center}%
-        \bfseries Abstract \end{center}\thispagestyle{empty}}%
+        \bfseries Abstract \end{center}}%
         {\vfill\null\thispagestyle{empty}}
         
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,8 +98,6 @@
     \DeclareUnicodeCharacter{00A0}{~}
     %
     
-    %cytowanie otoczone nawiasem
-    \renewcommand{\cite}{\citep}
     %Zmiana nawiasu z okrągłego na kwadratowy - Selecting citation style and punctuation
     \bibpunct{[}{]}{,}{a}{}{;}
     
